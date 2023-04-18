@@ -6,7 +6,7 @@ Go program that fetches water temperature information from an API.
 
 The data retrieved is published by Södertälje kommun. It represents the water temperature at locations around Södertälje. The endpoint used in this project exposes the most recently available data, i.e. it answers the question "What temperature is it right now?". Example:  
 
-````json
+```json
 [
   {
     "type": "Watertemp",
@@ -19,8 +19,8 @@ The data retrieved is published by Södertälje kommun. It represents the water 
     "gmap": "https://www.google.com/maps/search/?api=1&query=59.16883,17.59184"
   },
   ...
-]
-``` 
+] 
+```
 
 For more information, see 
 
