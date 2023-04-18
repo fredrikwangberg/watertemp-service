@@ -1,4 +1,4 @@
-module watertemp_app
+module watertemp
 
 go 1.15
 
