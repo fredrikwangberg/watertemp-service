@@ -1,6 +1,6 @@
 # Watertemp app
 
-Go program that fetches water temperature information from an API.
+Go program developed for learning purposes. It currently fetches water temperature information from a public API.
 
 ## Datasource
 
@@ -26,3 +26,16 @@ For more information, see
 
 * https://www.sodertalje.se/kommun-och-politik/for-medborgare/oppna-data/oppen-data/#esc_entry=870&esc_context=1
 * https://catalog.sodertalje.se/store/1/resource/862
+
+
+# Project goals
+
+* [ ] Manage to run test files locally
+* [ ] Build and test using automated workflow in github
+* [ ] Build and deploy in the cloud
+* [ ] Automating CI/CD pipeline in github
+* [ ] Production/staging environment
+* [ ] Expose the app in some basic front-end
+* [ ] Collect data by running the app on a regular basis, insert data in a database
+* [ ] Build a new app that analyses the database contents with respect to some basic statistical properties
+* [ ] ...
