@@ -1,4 +1,4 @@
-package watertemp
+package datasource
 
 type WaterTemperatureSchema struct {
 	Type          string

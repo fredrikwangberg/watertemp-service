@@ -1,4 +1,4 @@
-package watertemp
+package datasource
 
 import (
 	"encoding/json"
