@@ -1,6 +1,6 @@
-# Watertemp app
+# Watertemp
 
-Go program developed for learning purposes. It currently fetches water temperature information from a public API.
+A Go program developed for learning purposes, that fetches water temperature information from a public API.
 
 ## Datasource
 
@@ -30,8 +30,8 @@ For more information, see
 
 # Project goals
 
-* [ ] Manage to run test files locally
-* [ ] Build and test using automated workflow in github
+* [x] Manage to run test files locally
+* [x] Build and test using automated workflow in github
 * [ ] Build and deploy in the cloud
 * [ ] Automating CI/CD pipeline in github
 * [ ] Production/staging environment
