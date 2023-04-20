@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io.github.fredrikwangberg/watertemp"
+	"github.com/fredrikwangberg/watertemp/watertemp"
 )
 
 
