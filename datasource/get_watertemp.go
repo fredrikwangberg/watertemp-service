@@ -40,7 +40,7 @@ func GetDataFromDataSourceFullJson(apiUrl string) ([]WaterTemperatureSchema, err
 	}
 
 	body, err := ioutil.ReadAll(response.Body)
-	if err != nil{
+	if err != nil {
 		return nil, err
 	}
 
@@ -71,10 +71,9 @@ func GetLocationWithLowestTemperature(locations []WaterTemperatureSchema) WaterT
 }
 
 func WaterTemperatureSchemaToString(wts WaterTemperatureSchema) string {
-	return fmt.Sprintf("%s %f %s %s %d %f %f %s ", wts.Type, wts.Temp_water, wts.FormattedTime, wts.Alias, wts.Ts, wts.Latitude, wts.Longitude, wts.Gmap)
+	return fmt.Sprintf("%s %f degrees at %s %s %d %f %f %s ", wts.Type, wts.Temp_water, wts.FormattedTime, wts.Alias, wts.Ts, wts.Latitude, wts.Longitude, wts.Gmap)
 }
 
 func hasLowerTemperature(location1 WaterTemperatureSchema, location2 WaterTemperatureSchema) bool {
 	return location1.Temp_water < location2.Temp_water
 }
-
