@@ -1,4 +1,4 @@
-package watertemp
+package datasource
 
 import (
 	"testing"

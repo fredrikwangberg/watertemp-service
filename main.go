@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/fredrikwangberg/watertemp/watertemp"
+	"github.com/fredrikwangberg/watertemp/datasource"
 )
 
 
@@ -10,21 +10,21 @@ func main() {
 	data, err := getData(false)
 
 	if err == nil {
-		coldSite := watertemp.GetLocationWithLowestTemperature(data)
+		coldSite := datasource.GetLocationWithLowestTemperature(data)
 	    fmt.Println("Location with lowest water temperature:")
-		fmt.Printf(watertemp.WaterTemperatureSchemaToString(coldSite))
+		fmt.Printf(datasource.WaterTemperatureSchemaToString(coldSite))
 	} else {
 		fmt.Println("No data, err?")
 		fmt.Println(err)
 	}
 }
 
-func getData(useMocked bool) ([]watertemp.WaterTemperatureSchema, error) {
+func getData(useMocked bool) ([]datasource.WaterTemperatureSchema, error) {
 	if useMocked {
 	    fmt.Println("Using mocked data")
-		return watertemp.GetMockedData()
+		return datasource.GetMockedData()
 	} else {
 		apiUrl := "https://sodertaljeglue.eu-gb.mybluemix.net/getwatertemp"
-		return watertemp.GetDataFromDataSourceFullJson(apiUrl)
+		return datasource.GetDataFromDataSourceFullJson(apiUrl)
 	}
 }
