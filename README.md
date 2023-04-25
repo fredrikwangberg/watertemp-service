@@ -39,8 +39,11 @@ For more information, see
   * [ ] Set up docker image registry in Azure
   * [ ] Create environment to run image
   * [ ] Start image
-* [ ] Convert main.go to a web server that exposes an api endpoint
+* [ ] Create server.go that creates a Golang web server that exposes an api endpoint
   * [ ] Decide an API interface, e.g. a json `{"location": "a place", "temperature": 123}` 
+  * [ ] Create web server
+  * [ ] Create function that drops data from watertemp schema and converts the data to a json object (name of location and temperature) - create own class
+  * [ ] Test function (server_test.go)
 * [ ] Expose front-end/back-end publically on the internet
 * [ ] Automating CI/CD pipeline in github
 * [ ] Production/staging environment
