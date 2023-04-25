@@ -32,10 +32,22 @@ For more information, see
 
 * [x] Manage to run test files locally
 * [x] Build and test using automated workflow in github
-* [ ] Build and deploy in the cloud
+* [x] Choose cloud provider - Azure
+  * [ ] Set up account 
+* [ ] Deploy to Azure
+  * [ ] Package Golang code. In GitHub?
+  * [ ] Set up docker image registry in Azure
+  * [ ] Create environment to run image
+  * [ ] Start image
+* [ ] Convert main.go to a web server that exposes an api endpoint
+  * [ ] Decide an API interface, e.g. a json `{"location": "a place", "temperature": 123}` 
+* [ ] Expose front-end/back-end publically on the internet
 * [ ] Automating CI/CD pipeline in github
 * [ ] Production/staging environment
-* [ ] Expose the app in some basic front-end
+* [ ] Create front-end app
+  * [ ] Create new repository in GitHub, watertemp-app
+  * [ ] Chose framwork - ask Pär for advice
+  * [ ] Code
 * [ ] Collect data by running the app on a regular basis, insert data in a database
 * [ ] Build a new app that analyses the database contents with respect to some basic statistical properties
 * [ ] ...
