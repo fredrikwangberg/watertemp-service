@@ -71,7 +71,7 @@ func GetLocationWithLowestTemperature(locations []WaterTemperatureSchema) WaterT
 }
 
 func WaterTemperatureSchemaToString(wts WaterTemperatureSchema) string {
-	return fmt.Sprintf("%s %f degrees at %s %s %d %f %f %s ", wts.Type, wts.Temp_water, wts.FormattedTime, wts.Alias, wts.Ts, wts.Latitude, wts.Longitude, wts.Gmap)
+	return fmt.Sprintf("%+v\n", wts)
 }
 
 func hasLowerTemperature(location1 WaterTemperatureSchema, location2 WaterTemperatureSchema) bool {
