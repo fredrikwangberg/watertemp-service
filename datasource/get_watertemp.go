@@ -77,3 +77,39 @@ func WaterTemperatureSchemaToString(wts WaterTemperatureSchema) string {
 func hasLowerTemperature(location1 WaterTemperatureSchema, location2 WaterTemperatureSchema) bool {
 	return location1.Temp_water < location2.Temp_water
 }
+
+/* TO DO: Need to discuss this part of the code!
+The task was to "Create function that drops data from watertemp schema and converts the data
+to a json object (name of location and temperature) - create own class"
+Is it a reasonable solution?
+Is it correctly located or should for example ColdSiteStruct be located elsewhere? */
+
+// Define a struct type ColdSiteStruct
+type ColdSiteStruct struct {
+	TempWater float32 `json:"Temp_water"`
+	Alias     string  `json:"Alias"`
+}
+
+// Define a function named GetJsonColdSite that takes an input parameter data of type []WaterTemperatureSchema, and returns a byte slice and an error
+func GetJsonColdSite(data []WaterTemperatureSchema) ([]byte, error) {
+
+	// Call GetLocationWithLowestTemperature function to retrieve the location with the lowest temperature from the input data
+	coldSite := GetLocationWithLowestTemperature(data)
+
+	// Create a new ColdSiteStruct instance with fields set to the values of the lowest temperature location
+	coldSiteStruct := ColdSiteStruct{
+		TempWater: coldSite.Temp_water,
+		Alias:     coldSite.Alias,
+	}
+
+	// Convert the coldSiteStruct instance to a JSON byte array
+	jsonColdSite, err := json.Marshal(coldSiteStruct) // If there is an error during the marshaling process, return nil and the error
+	if err != nil {
+		return nil, err
+
+	}
+
+	return jsonColdSite, nil // Otherwise, return the JSON byte array and nil
+}
+
+/* END TO DO */
