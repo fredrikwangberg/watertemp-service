@@ -12,7 +12,7 @@ import (
 func TestParsing(t *testing.T) {
 	testJson := `[{"type":"Watertemp","temp_water":7.8,"formatted_time":"Nov 02 2021 20:10:14","alias":"Site1","ts":1635880214580,"latitude":59.16883,"longitude":17.59184,"gmap":"link"}]`
 	data, _ := parseResponseBody([]byte(testJson))
-	assert.Equal(t, data[0].Alias, "Site2")
+	assert.Equal(t, data[0].Alias, "Site1")
 }
 
 func TestCompareLocationTemperatures(t *testing.T) {
