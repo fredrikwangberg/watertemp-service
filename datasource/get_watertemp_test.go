@@ -1,10 +1,9 @@
 package datasource
 
 import (
-	"testing"
 	"github.com/skyportsystems/testify/assert"
+	"testing"
 )
-
 
 // TODO, write tests on parseing of json
 //   Malformed json
@@ -16,14 +15,14 @@ func TestParsing(t *testing.T) {
 	assert.Equal(t, data[0].Alias, "Site1")
 }
 
-func TestCompareLocationTemperatures(t *testing.T){
+func TestCompareLocationTemperatures(t *testing.T) {
 	location1 := WaterTemperatureSchema{
-		Temp_water:    6,
-		Alias:         "Warmest",
+		Temp_water: 6,
+		Alias:      "Warmest",
 	}
 	location2 := WaterTemperatureSchema{
-		Temp_water:    5,
-		Alias:         "Warmest",
+		Temp_water: 5,
+		Alias:      "Warmest",
 	}
 	if hasLowerTemperature(location1, location2) {
 		t.Fatalf("location2 has lowest temperature, not location1")
