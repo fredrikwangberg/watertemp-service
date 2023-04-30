@@ -25,8 +25,7 @@ jobs:
         run: go build -v ./...
 
       - name: Test
-        id: test
         run: go test -v ./...
 
       - name: Build docker image
-        run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+        run: docker build . --file Dockerfile --tag watertemp:$(date +%s) --tag test
