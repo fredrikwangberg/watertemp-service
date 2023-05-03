@@ -1,6 +1,6 @@
 package datasource
 
-type WaterTemperatureSchema struct {
+type WaterTemperature struct {
 	Type           string
 	Temp_water     float32
 	Formatted_Time string
@@ -9,4 +9,9 @@ type WaterTemperatureSchema struct {
 	Latitude       float32
 	Longitude      float32
 	Gmap           string
+}
+
+type TemperatureLocation struct {
+	Temperature float32 `json:"Temp_water"` // TODO: Do we need this?
+	Location    string  `json:"Alias"`
 }

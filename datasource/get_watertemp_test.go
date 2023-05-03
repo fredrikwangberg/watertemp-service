@@ -1,8 +1,9 @@
 package datasource
 
 import (
-	"github.com/skyportsystems/testify/assert"
 	"testing"
+
+	"github.com/skyportsystems/testify/assert"
 )
 
 // TODO, write tests on parseing of json
@@ -16,11 +17,11 @@ func TestParsing(t *testing.T) {
 }
 
 func TestCompareLocationTemperatures(t *testing.T) {
-	location1 := WaterTemperatureSchema{
+	location1 := WaterTemperature{
 		Temp_water: 6,
 		Alias:      "Warmest",
 	}
-	location2 := WaterTemperatureSchema{
+	location2 := WaterTemperature{
 		Temp_water: 5,
 		Alias:      "Warmest",
 	}

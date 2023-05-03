@@ -2,22 +2,31 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/fredrikwangberg/watertemp/datasource"
 )
 
 func main() {
 	data, err := getData(false)
 	if err == nil {
-		coldSite := datasource.GetLocationWithLowestTemperature(data)
-		fmt.Println("Location with lowest water temperature:")
-		fmt.Printf(datasource.WaterTemperatureSchemaToString(coldSite))
+		coldest := datasource.GetLocationWithLowestTemperature(data)
+		coldestJson, err := datasource.GetTemperatureLocationJson(coldest)
+
+		if err == nil {
+			fmt.Println("Location with the lowest temperature:")
+			fmt.Println(datasource.WaterTemperatureToString(coldest))
+			fmt.Println(string(coldestJson))
+		} else {
+			fmt.Println("Error getting JSON object: ", err)
+		}
+
 	} else {
 		fmt.Println("No data, err?")
 		fmt.Println(err)
 	}
 }
 
-func getData(useMocked bool) ([]datasource.WaterTemperatureSchema, error) {
+func getData(useMocked bool) ([]datasource.WaterTemperature, error) {
 	if useMocked {
 		fmt.Println("Using mocked data")
 		return datasource.GetMockedData()
