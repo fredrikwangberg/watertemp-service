@@ -9,21 +9,13 @@ import (
 func main() {
 	data, err := getData(false)
 	if err == nil {
-		coldSite := datasource.GetLocationWithLowestTemperature(data)
-		fmt.Println("Location with lowest water temperature:")
-		fmt.Printf(datasource.WaterTemperatureSchemaToString(coldSite))
-	} else {
-		fmt.Println("No data, err?")
-		fmt.Println(err)
-	}
-
-	/* TO DO: Updated main() in order to test the function that I built. */
-	if err == nil {
-		jsonColdSite, err := datasource.GetJsonColdSite(data)
+		coldest := datasource.GetLocationWithLowestTemperature(data)
+		coldestJson, err := datasource.GetTemperatureLocationJson(coldest)
 
 		if err == nil {
-			fmt.Println("Here is the string of the json-object for the location with the lowest temperature:")
-			fmt.Println(string(jsonColdSite))
+			fmt.Println("Location with the lowest temperature:")
+			fmt.Println(datasource.WaterTemperatureToString(coldest))
+			fmt.Println(string(coldestJson))
 		} else {
 			fmt.Println("Error getting JSON object: ", err)
 		}
@@ -32,10 +24,9 @@ func main() {
 		fmt.Println("No data, err?")
 		fmt.Println(err)
 	}
-	/* END TO DO*/
 }
 
-func getData(useMocked bool) ([]datasource.WaterTemperatureSchema, error) {
+func getData(useMocked bool) ([]datasource.WaterTemperature, error) {
 	if useMocked {
 		fmt.Println("Using mocked data")
 		return datasource.GetMockedData()
