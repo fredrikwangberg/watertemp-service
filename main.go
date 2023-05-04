@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"net/http"
 
 	"github.com/fredrikwangberg/watertemp/datasource"
 )
@@ -17,13 +16,6 @@ func main() {
 			fmt.Println("Location with the lowest temperature:")
 			fmt.Println(datasource.WaterTemperatureToString(coldest))
 			fmt.Println(string(coldestJson))
-
-			http.HandleFunc("/coldest", func(w http.ResponseWriter, r *http.Request) {
-				datasource.ColdestLink(w, r, coldestJson)
-			})
-			fmt.Println("Check the response from the web server with http://localhost:8080/coldest")
-			http.ListenAndServe(":8080", nil)
-
 		} else {
 			fmt.Println("Error getting JSON object: ", err)
 		}
