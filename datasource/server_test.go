@@ -14,7 +14,7 @@ func TestLinkHandler(t *testing.T) {
 	request, _ := http.NewRequest("GET", "/test", nil)
 	response := httptest.NewRecorder()
 	mockData := []byte(`{"Temperature": "100", "Location": "Test"}`)
-	LinkHandler(response, request, mockData)
+	ColdestTemperatureLocationHandler(response, request, mockData)
 
 	// test if the status code is 200
 	assert.Equal(t, http.StatusOK, response.Result().StatusCode)
