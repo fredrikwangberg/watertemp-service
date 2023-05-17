@@ -12,6 +12,6 @@ type WaterTemperature struct {
 }
 
 type TemperatureLocation struct {
-	Temperature float32 `json:"Temp_water"` // TODO: Do we need this?
-	Location    string  `json:"Alias"`
+	Temperature float32 `json:"Temperature"`
+	Location    string  `json:"Location"`
 }

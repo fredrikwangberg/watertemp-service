@@ -93,3 +93,8 @@ func GetTemperatureLocationJson(input WaterTemperature) ([]byte, error) {
 
 	return temperatureLocationJson, nil
 }
+
+func GetTemperatureLocationFromSource() ([]WaterTemperature, error) {
+	apiUrl := "https://sodertaljeglue.eu-gb.mybluemix.net/getwatertemp"
+	return GetDataFromDataSourceFullJson(apiUrl)
+}
