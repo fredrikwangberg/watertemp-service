@@ -14,16 +14,22 @@ func TestColdestTemperatureLocationHandler(t *testing.T) {
 	response := httptest.NewRecorder()
 	ColdestTemperatureLocationHandler(response, request, GetMockedData)
 
-	assert.Equal(t, http.StatusOK, response.Result().StatusCode)
+	gotStatus := response.Result().StatusCode
+	wantStatus := http.StatusOK
+	assert.Equal(t, gotStatus, wantStatus)
 
-	got := response.Header().Get("Content-Type")
-	want := "application/json; charset=utf-8"
-	assert.Equal(t, got, want)
+	gotHeader := response.Header().Get("Content-Type")
+	wantHeader := "application/json; charset=utf-8"
+	assert.Equal(t, gotHeader, wantHeader)
 
 	var jsonResponse map[string]interface{}
 	err := json.Unmarshal(response.Body.Bytes(), &jsonResponse)
 	if err != nil {
 		t.Errorf("Response is not valid JSON: %v", err)
 	}
+
+	gotColdestTemperatureLocation := response.Body.String()
+	wantColdestTemperatureLocation := `{"Temperature":7.8,"Location":"Eklundsnäsbadet"}`
+	assert.Equal(t, gotColdestTemperatureLocation, wantColdestTemperatureLocation)
 
 }
