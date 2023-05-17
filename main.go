@@ -11,7 +11,7 @@ func main() {
 
 	fmt.Println("Check the response from the web server with http://localhost:8080/coldest")
 	http.HandleFunc("/coldest", func(w http.ResponseWriter, r *http.Request) {
-		datasource.ColdestTemperatureLocationHandler(w, r)
+		datasource.ColdestTemperatureLocationHandler(w, r, datasource.GetTemperatureLocationFromSource)
 	})
 	http.ListenAndServe(":8080", nil)
 

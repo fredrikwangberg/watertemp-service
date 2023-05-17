@@ -94,12 +94,7 @@ func GetTemperatureLocationJson(input WaterTemperature) ([]byte, error) {
 	return temperatureLocationJson, nil
 }
 
-func getData(useMocked bool) ([]WaterTemperature, error) {
-	if useMocked {
-		fmt.Println("Using mocked data")
-		return GetMockedData()
-	} else {
-		apiUrl := "https://sodertaljeglue.eu-gb.mybluemix.net/getwatertemp"
-		return GetDataFromDataSourceFullJson(apiUrl)
-	}
+func GetTemperatureLocationFromSource() ([]WaterTemperature, error) {
+	apiUrl := "https://sodertaljeglue.eu-gb.mybluemix.net/getwatertemp"
+	return GetDataFromDataSourceFullJson(apiUrl)
 }
