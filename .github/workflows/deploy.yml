@@ -36,6 +36,10 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >>$GITHUB_OUTPUT
+        id: extract_branch
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
@@ -45,7 +49,7 @@ jobs:
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
             type=semver,pattern={{version}},enable=${{ github.ref == format('refs/heads/{0}', 'release') }}
-            type=ref,event=pr,value=${{GITHUB_REF##*/}}-SNAPSHOT
+            type=ref,event=pr,value=${{ steps.extract_branch.outputs.branch }}-SNAPSHOT
             
 
       - name: Build and push Docker image
