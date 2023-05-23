@@ -58,8 +58,8 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=semver,pattern={{version}},enable=${{ github.ref == format('refs/heads/{0}', 'release') }}
-            type=raw,value=latest,enable={{is_default_branch}},priority=400
-            type=raw,value=${{ steps.extract_branch.outputs.branch }}-SNAPSHOT,enable=true,priority=300
+            type=raw,enable={{is_default_branch}},value=latest
+            type=raw,enable={{!is_default_branch}},value=${{ steps.extract_branch.outputs.branch }}-SNAPSHOT
 
       - name: Log in to the Container registry
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
