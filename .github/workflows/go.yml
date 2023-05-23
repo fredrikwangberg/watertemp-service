@@ -32,6 +32,8 @@ jobs:
 
   build-and-push-image:
     runs-on: ubuntu-latest
+    if: ${{ always() && contains(join(needs.*.result, ','), 'success') }}
+    needs: [ build ]
     permissions:
       contents: read
       packages: write
