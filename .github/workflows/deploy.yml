@@ -30,12 +30,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Log in to the Container registry
-        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Get branch name (pull request)
         if: github.event_name == 'pull_request'
         shell: bash
@@ -54,8 +48,13 @@ jobs:
             type=semver,pattern={{version}},enable=${{ github.ref == format('refs/heads/{0}', 'release') }}
             type=raw,value=latest,enable={{is_default_branch}},priority=400
             type=raw,value=${{ steps.extract_branch.outputs.branch }}-SNAPSHOT,enable=true,priority=300
-        #type=ref,event=pr,value=${{ steps.extract_branch.outputs.branch }}-SNAPSHOT
-            
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
