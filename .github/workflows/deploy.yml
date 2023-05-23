@@ -9,11 +9,7 @@
 
 name: Create and publish a Docker image
 
-on:
-  push:
-    branches: [ 'main' ]
-  pull_request:
-    branches: [ "main" ]
+on: workflow_dispatch
 
 env:
   REGISTRY: ghcr.io
@@ -30,7 +26,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Get branch name (pull request)
+      - name: Get branch name (if pull request)
         if: github.event_name == 'pull_request'
         shell: bash
         run: echo "branch=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_OUTPUT
