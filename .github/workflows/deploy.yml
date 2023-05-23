@@ -44,7 +44,7 @@ jobs:
       - name: Get branch name (pull request)
         if: github.event_name == 'pull_request'
         shell: bash
-        run: echo "branch=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
+        run: echo "branch=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_OUTPUT
         id: extract_branch
 
       - name: Debug extracted branch name
