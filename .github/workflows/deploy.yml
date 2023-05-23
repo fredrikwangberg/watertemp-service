@@ -37,11 +37,6 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Extract branch name for PRs
-        shell: bash
-        run: echo "branch=$(echo ${GITHUB_REF_NAME})" >> $GITHUB_OUTPUT
-        id: extract_branch_old
-
       - name: Get branch name (pull request)
         if: github.event_name == 'pull_request'
         shell: bash
