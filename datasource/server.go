@@ -3,7 +3,7 @@ package datasource
 import (
 	"net/http"
 )
-
+{}
 func ColdestTemperatureLocationHandler(w http.ResponseWriter, r *http.Request, getDataFunc func() ([]WaterTemperature, error)) {
 	data, err := getDataFunc()
 	if err == nil {
