@@ -39,22 +39,16 @@ jobs:
       - name: Extract branch name for PRs
         shell: bash
         run: echo "branch=$(echo ${GITHUB_REF_NAME})" >> $GITHUB_OUTPUT
-        id: extract_branch
-      - name: Get branch name (merge)
-        if: github.event_name != 'pull_request'
-        shell: bash
-        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | tr / -)" >> $GITHUB_ENV
+        id: extract_branch_old
 
       - name: Get branch name (pull request)
         if: github.event_name == 'pull_request'
         shell: bash
-        run: echo "BRANCH_NAME=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
-        id: extract_branch2
+        run: echo "branch=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
+        id: extract_branch
 
-      - name: Debug env branch name
-        run: echo "branch ${{ env.BRANCH_NAME }} event_name ${{ github.event_name}}"
-      #- name: Debug github event name
-      #  run: echo ${{ github.event_name }}
+      - name: Debug extracted branch name
+        run: echo "branch from env ${{ env.branch }}, branch from output ${{ steps.extract_branch.outputs.branch }} event_name ${{ github.event_name}}"
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
