@@ -22,15 +22,15 @@ jobs:
     - name: Log in to registry
       uses: docker/login-action@v2
       with:
-        registry: https://ghcr.io/fredrikwangberg//
-        username: ${{ secrets.AzureAppService_ContainerUsername_53534fb54b09437291e36cee5e6fc6f3 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_988f76b57cbf4cc8865537f6d25befb7 }}
+        registry: https://ghcr.io/fredrikwangberg/
+        username: ${{ secrets.AzureAppService_ContainerUsername_d4c84d017c8a4af7b05a1b1e6cd3ae3d }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_c080176a83364dbda188344c8c6744c5 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: ghcr.io/fredrikwangberg//${{ secrets.AzureAppService_ContainerUsername_53534fb54b09437291e36cee5e6fc6f3 }}/watertemp-service:${{ github.sha }}
+        tags: ghcr.io/fredrikwangberg/${{ secrets.AzureAppService_ContainerUsername_d4c84d017c8a4af7b05a1b1e6cd3ae3d }}/watertemp-service:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'watertemp'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_ccda635295dc4259b35df1b7b6ca5059 }}
-        images: 'ghcr.io/fredrikwangberg//${{ secrets.AzureAppService_ContainerUsername_53534fb54b09437291e36cee5e6fc6f3 }}/watertemp-service:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_33ff367141f448a794dce60a5a851b78 }}
+        images: 'ghcr.io/fredrikwangberg/${{ secrets.AzureAppService_ContainerUsername_d4c84d017c8a4af7b05a1b1e6cd3ae3d }}/watertemp-service:${{ github.sha }}'
