@@ -13,6 +13,6 @@ func main() {
 	http.HandleFunc("/coldest", func(w http.ResponseWriter, r *http.Request) {
 		datasource.ColdestTemperatureLocationHandler(w, r, datasource.GetTemperatureLocationFromSource)
 	})
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":80", nil)
 
 }
