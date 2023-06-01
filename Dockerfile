@@ -27,7 +27,7 @@ WORKDIR /
 
 COPY --from=build-stage /watertemp /watertemp
 
-EXPOSE 8080
+EXPOSE 80
 
 USER nonroot:nonroot
 
